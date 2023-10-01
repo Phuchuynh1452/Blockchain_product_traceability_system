@@ -11,7 +11,7 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="info">
-                <i style="color: white; margin-left: 20px" class="fa fa-user-friends"><a href="#" style="margin-left: 10px">Name</a></i>
+                <i style="color: white; margin-left: 20px" class="fa fa-user-friends"><a href="#" style="margin-left: 10px">Admin</a></i>
             </div>
         </div>
 

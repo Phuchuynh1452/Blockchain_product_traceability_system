@@ -9,6 +9,8 @@ use App\Http\Services\User\UserService;
 class RegisterController extends Controller
 {
     protected $userService;
+
+    //TODO implement method
     public function __construct(UserService $userService){
         $this->userService = $userService;
     }
@@ -25,6 +27,8 @@ class RegisterController extends Controller
             'mobile' => 'bail|required|unique:users|max:11',
             'password' => 'bail|required|min:6',
             'repass' => 'bail|required|same:password',
+            "birth" => 'bail|required|date|before_or_equal:today',
+            "sex" => 'bail|required',
         ],
         [
             'name.required' => 'Vui lòng nhập tên!',
@@ -35,8 +39,10 @@ class RegisterController extends Controller
             'password.required' => 'Vui lòng nhập mật khẩu!',
             'password.min' => 'Độ dài mật khẩu tối thiểu là 8 kí tự!',
             'repass.required' => 'Vui lòng nhập lại mật khẩu!',
-            'repass.same' => 'Mật khẩu không giống!'
-            ]);
+            'repass.same' => 'Mật khẩu không giống!',
+            "birth" => 'Ngày sinh không được lớn hơn hôm nay!',
+            "sex" => 'Vui lòng chọn giới tính'
+        ]);
 
         $result = $this->userService->create($request);
         if ($result){

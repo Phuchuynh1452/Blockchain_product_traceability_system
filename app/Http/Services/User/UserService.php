@@ -39,6 +39,8 @@ class UserService
                     'email'=>(string)$request->input('email'),
                     'mobile'=>(string)$request->input('mobile'),
                     'password'=>bcrypt($request->input('password')),
+                    'birth'=>(string)$request->input('birth'),
+                    'sex'=>(string)$request->input('sex'),
                     'active'=>4
                     ]);
                     Session::flash("success","Tạo tài khoản thành công");
