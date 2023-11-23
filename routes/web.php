@@ -7,6 +7,9 @@ use App\Http\Middleware\CheckLoginPerrmissionAdmin;
 use App\Http\Middleware\checkLoginPerrmission;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\Admin\SeedsupplierController;
+use App\Http\Controllers\Admin\FarmerController;
+use App\Http\Controllers\Admin\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,8 +27,7 @@ Route::middleware(['auth'])->group(function(){
     Route::middleware(checkLoginPerrmission::class)->group(function () {
         Route::prefix('admin')->group(function () {
 
-            Route::get('/', [UserController::class, 'index'])->name('admin');
-
+            Route::get('/', [SeedsupplierController::class, 'index'])->name('admin');
             #block
 //            Route::middleware(CheckLoginPerrmissionAdmin::class)->group(function (){
 //                Route::prefix('blocks')->group(function () {
@@ -51,24 +53,24 @@ Route::middleware(['auth'])->group(function(){
 
 
             #seedsupplier
-//            Route::prefix('seedsuppliers')->group(function () {
-//                Route::get('/add', [SeedsupplierController::class, 'create'])->name('admin.seedsuppliers.add');
-//                Route::post('/add',[SeedsupplierController::class,'store']);
-//                Route::get('/list', [SeedsupplierController::class, 'index'])->name('admin.seedsuppliers.list');
-//                Route::get('/edit/{seedsupplier}', [SeedsupplierController::class, 'show']);
-//                Route::post('/edit/{seedsupplier}', [SeedsupplierController::class, 'update']);
-//                Route::DELETE('/destroy', [SeedsupplierController::class, 'destroy']);
-//            });
+            Route::prefix('seedsuppliers')->group(function () {
+                Route::get('/add', [SeedsupplierController::class, 'create'])->name('admin.seedsuppliers.add');
+                Route::post('/add',[SeedsupplierController::class,'store']);
+                Route::get('/list', [SeedsupplierController::class, 'index'])->name('admin.seedsuppliers.list');
+                Route::get('/edit/{seedsupplier}', [SeedsupplierController::class, 'show']);
+                Route::post('/edit/{seedsupplier}', [SeedsupplierController::class, 'update']);
+                Route::DELETE('/destroy', [SeedsupplierController::class, 'destroy']);
+            });
 
             #farmer
-//            Route::prefix('farmers')->group(function () {
-//                Route::get('/add', [FarmerController::class, 'create'])->name('admin.farmers.add');
-//                Route::post('/add',[FarmerController::class,'store']);
-//                Route::get('/list', [FarmerController::class, 'index'])->name('admin.farmers.list');
-//                Route::get('/edit/{farmer}', [FarmerController::class, 'show']);
-//                Route::post('/edit/{farmer}', [FarmerController::class, 'update']);
-//                Route::DELETE('/destroy', [FarmerController::class, 'destroy']);
-//            });
+            Route::prefix('farmers')->group(function () {
+                Route::get('/add', [FarmerController::class, 'create'])->name('admin.farmers.add');
+                Route::post('/add',[FarmerController::class,'store']);
+                Route::get('/list', [FarmerController::class, 'index'])->name('admin.farmers.list');
+                Route::get('/edit/{farmer}', [FarmerController::class, 'show']);
+                Route::post('/edit/{farmer}', [FarmerController::class, 'update']);
+                Route::DELETE('/destroy', [FarmerController::class, 'destroy']);
+            });
 
             #saleroom
 //            Route::prefix('salerooms')->group(function () {
@@ -90,14 +92,14 @@ Route::middleware(['auth'])->group(function(){
 //                Route::DELETE('/destroy', [SeedsandSeedlingsController::class, 'destroy']);
 //            });
 
-            #crops
-//            Route::prefix('crops')->group(function () {
-//                Route::get('/add', [CropController::class, 'create'])->name('admin.crops.add');
-//                Route::post('/add',[CropController::class,'store']);
-//                Route::get('/list', [CropController::class, 'index'])->name('admin.crops.list');
-//                Route::get('/edit/{crop}', [CropController::class, 'show']);
-//                Route::post('/edit/{crop}', [CropController::class, 'update']);
-//                Route::DELETE('/destroy', [CropController::class, 'destroy']);
+            #fishs
+//            Route::prefix('fishs')->group(function () {
+//                Route::get('/add', [FishController::class, 'create'])->name('admin.fishs.add');
+//                Route::post('/add',[FishController::class,'store']);
+//                Route::get('/list', [FishController::class, 'index'])->name('admin.fishs.list');
+//                Route::get('/edit/{crop}', [FishController::class, 'show']);
+//                Route::post('/edit/{crop}', [FishController::class, 'update']);
+//                Route::DELETE('/destroy', [FishController::class, 'destroy']);
 //            });
 
             #slider
@@ -111,19 +113,19 @@ Route::middleware(['auth'])->group(function(){
 //            });
 
             #products
-//            Route::prefix('products')->group(function () {
-//                Route::get('/add', [ProductController::class, 'create'])->name('admin.products.add');
-//                Route::post('/add',[ProductController::class,'store']);
-//                Route::get('/list', [ProductController::class, 'index'])->name('admin.products.list');
-//                Route::get('/edit/{product}', [ProductController::class, 'show']);
-//                Route::post('/edit/{product}', [ProductController::class, 'update']);
-//                Route::DELETE('/destroy', [ProductController::class, 'destroy']);
-//
-//                Route::get('addimg/{product}', [ProductImgController::class, 'createImg']);
-//                Route::post('addimg/{product}', [ProductImgController::class, 'storeImg']);
-//                Route::get('imglist', [ProductImgController::class, 'imgList']);
-//                Route::DELETE('destroyImg', [ProductImgController::class, 'destroyImg']);
-//            });
+            Route::prefix('products')->group(function () {
+                Route::get('/add', [ProductController::class, 'create'])->name('admin.products.add');
+                Route::post('/add',[ProductController::class,'store']);
+                Route::get('/list', [ProductController::class, 'index'])->name('admin.products.list');
+                Route::get('/edit/{product}', [ProductController::class, 'show']);
+                Route::post('/edit/{product}', [ProductController::class, 'update']);
+                Route::DELETE('/destroy', [ProductController::class, 'destroy']);
+
+                Route::get('addimg/{product}', [ProductImgController::class, 'createImg']);
+                Route::post('addimg/{product}', [ProductImgController::class, 'storeImg']);
+                Route::get('imglist', [ProductImgController::class, 'imgList']);
+                Route::DELETE('destroyImg', [ProductImgController::class, 'destroyImg']);
+            });
 
             #menu
 //            Route::prefix('menus')->group(function () {

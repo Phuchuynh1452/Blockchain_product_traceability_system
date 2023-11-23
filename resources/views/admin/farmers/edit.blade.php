@@ -21,7 +21,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="menu">Mã Vùng Trồng</label>
-                        <input type="text" name="mavungtrong" value="{{ $farmers->mavungtrong }}" class="form-control"  placeholder="Nhập mã doanh nghiệp">
+                        <input type="text" name="macoso" value="{{ $farmers->macoso }}" class="form-control"  placeholder="Nhập mã doanh nghiệp">
                     </div>
                 </div>
             </div>

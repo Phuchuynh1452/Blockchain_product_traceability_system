@@ -20,15 +20,16 @@ class MainController extends Controller
     protected $product;
     protected $cartService;
 
-    public function __construct(SliderService $slider, MenuService $menu, ProductService $product, CartService $cartService)
-    {
-        $this->slider = $slider;
-        $this->menu = $menu;
-        $this->product = $product;
-        $this->cartService =$cartService;
-    }
+//    public function __construct(SliderService $slider, MenuService $menu, ProductService $product, CartService $cartService)
+//    {
+//        $this->slider = $slider;
+//        $this->menu = $menu;
+//        $this->product = $product;
+//        $this->cartService =$cartService;
+//    }
 
     public function index(){
+        dd("Hi");
         $day = Carbon::now()->dayOfYear;
         return view('home',[
             'title' => 'HUY PHÚC SHOP',

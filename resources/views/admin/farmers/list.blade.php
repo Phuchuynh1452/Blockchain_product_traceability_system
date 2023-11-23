@@ -6,7 +6,7 @@
         <thead style="font-size: 18px; font-style: italic">
         <tr>
             <th width="5%">STT</th>
-            <th width="15%">Mã Vùng Trồng</th>
+            <th width="15%">Mã Cơ Sở</th>
             <th width="15%">Tên Cơ Sở</th>
             <th width="10%">Chủ Vườn</th>
             <th width="20%">Địa chỉ</th>
@@ -19,7 +19,7 @@
                 @foreach($farmers as $key => $farmer)
                     <tr>
                         <td>{{$i++}}</td>
-                        <td>{{$farmer->mavungtrong}}</td>
+                        <td>{{$farmer->macoso}}</td>
                         <td>{{$farmer->tencoso}}</td>
                         <td>{{$farmer->tenchunhatrong}}</td>
                         <td>{{$farmer->diachi}}</td>

@@ -7524,7 +7524,7 @@ crop-simple:
     - 6.0.0-beta1
     - 6.0.0
     - 6.2.0
-  label: Crop simple
+  label: Fish simple
   search:
     terms: []
   styles:

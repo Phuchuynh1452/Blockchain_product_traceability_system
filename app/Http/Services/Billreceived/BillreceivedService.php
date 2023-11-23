@@ -6,7 +6,7 @@ use App\Helpers\GlobalVariable;
 use App\Http\BlockChain\Blockchain;
 use App\Http\Services\BlockChainService;
 use App\Models\Billreceived;
-use App\Models\Crop;
+use App\Models\Fish;
 use App\Models\Farmer;
 use App\Models\Product;
 use App\Models\Salesroom;
@@ -46,15 +46,15 @@ class BillreceivedService
 
     public function getFirstProduct(){
         return DB::select('select products.id, products.thumb, seedsuppliers.madoanhnghiep, farmers.mavungtrong, farmers.tencoso , seedsuppliers.tencoso as name_seed
-                                 from products, seedsuppliers, farmers, crops, seedsandseedlings
-                                 where products.id_crop = crops.id and crops.id_farmer = farmers.id and crops.id_seedandseedling = seedsandseedlings.id and seedsandseedlings.id_seedsupplier = seedsuppliers.id
+                                 from products, seedsuppliers, farmers, fishs, seedsandseedlings
+                                 where products.id_crop = fishs.id and fishs.id_farmer = farmers.id and fishs.id_seedandseedling = seedsandseedlings.id and seedsandseedlings.id_seedsupplier = seedsuppliers.id
                                  ORDER BY id ASC LIMIT 1');
     }
 
     public function getProductValue($id_product){
         return $info_product = DB::select('select products.id as id_product, farmers.mavungtrong, farmers.tenchunhatrong, seedsuppliers.madoanhnghiep, seedsuppliers.tencoso, products.thumb
-                                              from  products, crops, farmers, seedsandseedlings, seedsuppliers
-                                              where products.id_crop = crops.id and crops.id_farmer = farmers.id and crops.id_seedandseedling = seedsandseedlings.id
+                                              from  products, fishs, farmers, seedsandseedlings, seedsuppliers
+                                              where products.id_crop = fishs.id and fishs.id_farmer = farmers.id and fishs.id_seedandseedling = seedsandseedlings.id
                                                     and seedsandseedlings.id_seedsupplier = seedsuppliers.id and products.id = '.$id_product);
     }
 
@@ -122,9 +122,9 @@ class BillreceivedService
                                                     farmers.mavungtrong, farmers.thumb as thumb_farmer, farmers.tencoso as tencoso_farmer, farmers.mota as mota_farmer, farmers.diachi as diachi_nv, farmers.sodienthoai as sodienthoai_nv,
                                                     seedsuppliers.madoanhnghiep, seedsuppliers.thumb as thumb_seedsupplier, seedsuppliers.madoanhnghiep as madoanhnghiep_seedsupplier, seedsuppliers.tencoso as tencoso_seed, seedsuppliers.mota as mota_seedsupplier, seedsuppliers.diachi as diachi_seedsupplier, seedsuppliers.sodienthoai as sodienthoai_seedsupplier,
                                                     seedsandseedlings.thumb as thumb_seedsandseedling, seedsandseedlings.description as description_seedsandseedling, seedsandseedlings.name as name_seedsandseedling, seedsandseedlings.detail as detail_seedsandseedling,
-                                                    crops.thumb as thumb_crop, crops.detail as detail_crop, crops.description as description_crop, crops.name as name_crop
-                                              from  products, crops, farmers, seedsandseedlings, seedsuppliers
-                                              where products.id_crop = crops.id and crops.id_farmer = farmers.id and crops.id_seedandseedling = seedsandseedlings.id
+                                                    fishs.thumb as thumb_crop, fishs.detail as detail_crop, fishs.description as description_crop, fishs.name as name_crop
+                                              from  products, fishs, farmers, seedsandseedlings, seedsuppliers
+                                              where products.id_crop = fishs.id and fishs.id_farmer = farmers.id and fishs.id_seedandseedling = seedsandseedlings.id
                                                     and seedsandseedlings.id_seedsupplier = seedsuppliers.id and products.id = '.$id_product);
 
 

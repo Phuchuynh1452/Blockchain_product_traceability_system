@@ -2,7 +2,7 @@
 
 namespace App\Http\Services\Product;
 
-use App\Models\Crop;
+use App\Models\Fish;
 use App\Models\Farmer;
 use App\Models\img_products;
 use App\Models\Menu;
@@ -15,14 +15,14 @@ class ProductService
 {
 
     public function get(){
-        $result = DB::select('select products.id, products.name, products.description, products.detail, products.price, products.thumb, crops.name as name_crop
-                                    from crops, products
-                                    where crops.id = products.id_crop');
+        $result = DB::select('select products.id, products.name, products.description, products.detail, products.price, products.thumb, fishs.name as name_crop
+                                    from fishs, products
+                                    where fishs.id = products.id_crop');
         return $result;
     }
 
     public function getCrop(){
-        return Crop::all();
+        return Fish::all();
     }
 
     public function getMenu(){
@@ -35,8 +35,8 @@ class ProductService
 
     public function getId($id){
         $result = DB::select('select *
-                                    from  crops
-                                    where crops.id = '.$id);
+                                    from  fishs
+                                    where fishs.id = '.$id);
         return $result;
     }
 
@@ -83,7 +83,7 @@ class ProductService
 
     public function destroy($request){
         $id = (int)$request->input('id');
-        $crop = Crop::where('id', $id)->first();
+        $crop = Fish::where('id', $id)->first();
         if ($crop) {
             $crop->delete();
             return true;

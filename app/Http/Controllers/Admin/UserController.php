@@ -29,7 +29,6 @@ class UserController extends Controller
     }
     public function store(Request $request)
     {
-//        dd($request->input());
         $this->validate($request ,[
             'name'=> 'required',
             'email' => 'required|email',
@@ -41,7 +40,6 @@ class UserController extends Controller
             'password' => 'required',
             'repass'=>'required|same:password'
         ]);
-//        dd($request->input());
         if(session()->get('perr') == 1){
             $result = $this->userAdminService->create($request);
             if($result){
@@ -71,6 +69,7 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
+
         if($request->input('password')!=$request->input('repass')){
             Session::flash('error','Mật khẩu nhập lại không trùng khớp!');
             return redirect()->back();

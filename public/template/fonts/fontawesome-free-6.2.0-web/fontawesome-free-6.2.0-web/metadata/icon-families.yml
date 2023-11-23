@@ -9046,7 +9046,7 @@ crop-simple:
     pro:
       - family: classic
         style: solid
-  label: Crop simple
+  label: Fish simple
   unicode: f565
   voted: false
 cross:

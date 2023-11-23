@@ -18,13 +18,13 @@ class FarmerController extends Controller
     public function index(){
         $farmers = $this->farmerService->get();
         return view('admin.farmers.list',[
-            "title"=>"Nhà Vườn",
+            "title"=>"Hộ Kinh Doanh",
             "farmers"=>$farmers
         ]);
     }
     public function create(){
         return view('admin.farmers.add',[
-            "title"=>"Nhà Vườn",
+            "title"=>"Hộ Kinh Doanh",
         ]);
     }
 
@@ -43,7 +43,7 @@ class FarmerController extends Controller
 
     public function show(Farmer $farmer){
         return view('admin.farmers.edit',[
-            'title' => 'Chỉnh sửa nhà vườn: '. $farmer->tencoso,
+            'title' => 'Chỉnh sửa hộ: '. $farmer->tencoso,
             'farmers' => $farmer
         ]);
     }
@@ -64,7 +64,7 @@ class FarmerController extends Controller
         if($result){
             return response()->json([
                 'error' =>false,
-                'message' => 'Xóa nhà vườn thành công!'
+                'message' => 'Xóa hộ kinh doanh thành công!'
             ]);
         }
         return response()->json(['error'=>true]);

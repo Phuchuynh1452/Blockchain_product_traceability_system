@@ -17,6 +17,7 @@ class ProductController extends Controller
 
     public function index(){
         $products = $this->productService->get();
+        dd($products);
         return view('admin.products.list',[
             "title"=>"Sản Phẩm",
             "products"=>$products,
@@ -26,9 +27,9 @@ class ProductController extends Controller
         $crops = $this->productService->getCrop();
         $menus = $this->productService->getMenu();
         return view('admin.products.add',[
-            "title"=>"Sản Phẩm",
+            "title"=>"Thủy Sản",
             "menus"=>$menus,
-            "crops"=>$crops
+            "fishs"=>$crops
         ]);
     }
 
@@ -50,8 +51,8 @@ class ProductController extends Controller
         $menus = $this->productService->getMenu();
 //        dd($cropId);
         return view('admin.products.edit',[
-            'title' => 'Chỉnh sửa Sản Phẩm: '. $product->name,
-            'crops' => $crops,
+            'title' => 'Chỉnh sửa Thủy Sản: '. $product->name,
+            'fishs' => $crops,
             "menus"=>$menus,
             "product"=>$product
         ]);

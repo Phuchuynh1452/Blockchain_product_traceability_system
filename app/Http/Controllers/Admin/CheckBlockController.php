@@ -95,8 +95,8 @@ class CheckBlockController extends Controller
 
 
                         $info_product = DB::select('select products.id as id_product, products.name as name_product, products.description as des_product, products.detail as detail_product, products.thumb , farmers.mavungtrong, seedsuppliers.madoanhnghiep
-                                              from  products, crops, farmers, seedsandseedlings, seedsuppliers
-                                              where products.id_crop = crops.id and crops.id_farmer = farmers.id and crops.id_seedandseedling = seedsandseedlings.id
+                                              from  products, fishs, farmers, seedsandseedlings, seedsuppliers
+                                              where products.id_crop = fishs.id and fishs.id_farmer = farmers.id and fishs.id_seedandseedling = seedsandseedlings.id
                                                     and seedsandseedlings.id_seedsupplier = seedsuppliers.id and products.id = '.$id_product);
 
 
@@ -117,8 +117,8 @@ class CheckBlockController extends Controller
 
 
                     $info_product = DB::select('select products.id as id_product, products.name as name_product, products.description as des_product, products.detail as detail_product, products.thumb , farmers.mavungtrong, seedsuppliers.madoanhnghiep
-                                              from  products, crops, farmers, seedsandseedlings, seedsuppliers
-                                              where products.id_crop = crops.id and crops.id_farmer = farmers.id and crops.id_seedandseedling = seedsandseedlings.id
+                                              from  products, fishs, farmers, seedsandseedlings, seedsuppliers
+                                              where products.id_crop = fishs.id and fishs.id_farmer = farmers.id and fishs.id_seedandseedling = seedsandseedlings.id
                                                     and seedsandseedlings.id_seedsupplier = seedsuppliers.id and products.id = '.$id_product);
 
 

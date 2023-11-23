@@ -14,11 +14,11 @@ class FarmerService
     }
 
     public function create($request){
-        $a = DB::select('select * from farmers where mavungtrong ="'.$request->input('mavungtrong').'"');
+        $a = DB::select('select * from farmers where macoso ="'.$request->input('macoso').'"');
         try {
             if (sizeof($a) == 0){
                 Farmer::create([
-                    'mavungtrong'=>(string)$request->input('mavungtrong'),
+                    'macoso'=>(string)$request->input('macoso'),
                     'tencoso'=>(string)$request->input('tencoso'),
                     'tenchunhatrong'=>(string)$request->input('tenchunhatrong'),
                     'diachi'=>(string)$request->input('diachi'),
@@ -27,10 +27,10 @@ class FarmerService
                     'thumb'=>(string)$request->input('thumb'),
                 ]);
 //
-                Session::flash("success","Thêm nhà vuờn thành công");
+                Session::flash("success","Thêm hộ thành công");
                 return true;
             }else{
-                Session::flash("error","Đã có nhà vườn này rồi");
+                Session::flash("error","Đã có hộ này rồi");
                 return false;
             }
         }catch (\Exception $err){
@@ -42,7 +42,7 @@ class FarmerService
     public function update($request, $farmer){
         try {
             //-----------------------
-            $farmer->mavungtrong=(string)$request->input('mavungtrong');
+            $farmer->macoso=(string)$request->input('macoso');
             $farmer->tencoso=(string)$request->input('tencoso');
             $farmer->tenchunhatrong=(string)$request->input('tenchunhatrong');
             $farmer->diachi=(string)$request->input('diachi');

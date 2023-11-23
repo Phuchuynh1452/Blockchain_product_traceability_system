@@ -2,7 +2,7 @@
 
 namespace App\Http\Services\Seedsupplier;
 
-use App\Models\Seedsupplier;
+use App\Models\Supplier;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Session;
 class SeedsupplierService
 {
     public function get(){
-        return Seedsupplier::all();
+        return Supplier::all();
     }
 
     public function create($request){

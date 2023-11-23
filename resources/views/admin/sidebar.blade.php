@@ -54,6 +54,73 @@
                     </ul>
                 </li>
 
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>
+                            Nhà Cung Cấp
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?php echo route('admin.seedsuppliers.add')?>" class="nav-link">
+                                <p>Thêm nhà cung cấp </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/seedsuppliers/list" class="nav-link">
+                                <p>Danh sách nhà cung cấp </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>
+                            Chủ Hộ Kinh Doanh
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?php echo route('admin.farmers.add')?>" class="nav-link">
+                                <p>Thêm hộ kinh doanh </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/farmers/list" class="nav-link">
+                                <p>Danh sách hộ kinh doanh </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-fish"></i>
+                        <p>
+                            Thủy Sản
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?php echo route('admin.products.add')?>" class="nav-link">
+                                <p>Thêm loại thủy sản</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/products/list" class="nav-link">
+                                <p>Danh sách loại thủy sản </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-pager"></i>

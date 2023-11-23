@@ -21,7 +21,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="menu">Mã Vùng Trồng</label>
-                        <input type="text" name="mavungtrong" value="{{old('mavungtrong')}}" class="form-control"  placeholder="Nhập mã doanh nghiệp">
+                        <input type="text" name="macoso" value="{{old('macoso')}}" class="form-control"  placeholder="Nhập mã doanh nghiệp">
                     </div>
                 </div>
             </div>

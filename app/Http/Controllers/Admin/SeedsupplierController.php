@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\Seedsupplier\SeedsupplierService;
-use App\Models\Seedsupplier;
+use App\Models\Supplier;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -20,7 +20,7 @@ class SeedsupplierController extends Controller
     public function index(){
         $suppliers = $this->seedsupplierService->get();
         return view('admin.seedsuppliers.list',[
-            "title"=>"Nhà Cung Cấp Giống",
+            "title"=>"Nhà Cung Cấp",
             "seedsuppliers"=>$suppliers
         ]);
     }

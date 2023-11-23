@@ -15,25 +15,18 @@ class UserAdminService
         $a = DB::select('select email from users where email ="'.$request->input('email').'"');
         try {
             if (sizeof($a) == 0){
-                $namsinh = $request->input('birth');
-                $time = strtotime($namsinh);
-                $newformat = date('Y-m-d',$time);
-                $a = Carbon::now();
-                $age = $a->diffInYears($newformat);
+                $active = $request->input('active');
                 if ($request->input('active') == 3){
                     $active = 5;
                 }
-//                dd($age);
                 User::create([
                     'name'=>(string)$request->input('name'),
                     'email'=>(string)$request->input('email'),
                     'mobile'=>(string)$request->input('mobile'),
                     'active'=>(integer)$active,
                     'birth'=>(string)$request->input('birth'),
-                    'age'=>(integer)$age,
                     'sex'=>(string)$request->input('sex'),
                     'address'=>(string)$request->input('address'),
-                    'img'=>(string)$request->input('img'),
                     'password'=>bcrypt($request->input('password'))
                 ]);
 //                staffs::create([
@@ -86,20 +79,13 @@ class UserAdminService
 
     public function update($request, $user){
         try {
-            $namsinh = $request->input('birth');
-            $time = strtotime($namsinh);
-            $newformat = date('Y-m-d',$time);
-            $a = Carbon::now();
-            $age = $a->diffInYears($newformat);
             //-----------------------
             $user->name = (string) $request->input('name');
             $user->email = (string) $request->input('email');
             $user->birth = (string) $request->input('birth');
             $user->mobile = (string) $request->input('mobile');
-            $user->age = $age;
             $user->address = (string) $request->input('address');
             $user->sex = (string) $request->input('sex');
-            $user->password = bcrypt($request->input('password'));
             if($request->input('active')==''){
                 $user->active  = 4;
             }
