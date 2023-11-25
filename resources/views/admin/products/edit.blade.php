@@ -66,19 +66,32 @@
             </div>
 
             <div class="form-group">
-                <label for="menu">Cây Trồng</label>
-                <select class="form-control" name="id_crop">
-                    @foreach($crops as $crop)
-                        @if($crop->id == $product->id_crop)
-                            <option selected value="{{$crop->id}}">{{$crop->name}}</option>
+                <label for="menu">Nhà Cung Cấp</label>
+                <select class="form-control" name="supplier_id">
+                    @foreach($suppliers as $supplier)
+                        @if($supplier->id == $product->supplier_id)
+                            <option selected value="{{$supplier->id}}">{{$supplier->tencoso}}</option>
                         @else
-                            <option value="{{$crop->id}}">{{$crop->name}}</option>
+                            <option value="{{$supplier->id}}">{{$supplier->tencoso}}</option>
                         @endif
 
                     @endforeach
                 </select>
             </div>
 
+            <div class="form-group">
+                <label for="menu">Hộ Nuôi Trồng</label>
+                <select class="form-control" name="farmer_id">
+                    @foreach($farmers as $farmer)
+                        @if($farmer->id == $product->farmer_id)
+                            <option selected value="{{$farmer->id}}">{{$farmer->tencoso}}</option>
+                        @else
+                            <option value="{{$farmer->id}}">{{$farmer->tencoso}}</option>
+                        @endif
+
+                    @endforeach
+                </select>
+            </div>
 
             <div class="form-group">
                 <label for="menu">Danh Mục</label>

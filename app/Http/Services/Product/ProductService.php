@@ -2,12 +2,12 @@
 
 namespace App\Http\Services\Product;
 
-use App\Models\Fish;
 use App\Models\Farmer;
 use App\Models\img_products;
 use App\Models\Menu;
 use App\Models\Product;
 use App\Models\Seedsandseedling;
+use App\Models\Supplier;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -15,18 +15,21 @@ class ProductService
 {
 
     public function get(){
-        $result = DB::select('select products.id, products.name, products.description, products.detail, products.price, products.thumb, fishs.name as name_crop
-                                    from fishs, products
-                                    where fishs.id = products.id_crop');
+        $result = DB::select('select products.id, products.name, products.description, products.detail, products.price, products.thumb
+                                    from products');
         return $result;
-    }
-
-    public function getCrop(){
-        return Fish::all();
     }
 
     public function getMenu(){
         return Menu::all();
+    }
+
+    public function getFarmer(){
+        return Farmer::all();
+    }
+
+    public function getSupplier(){
+        return Supplier::all();
     }
 
     public function getSeedsandSeedling(){
@@ -49,7 +52,8 @@ class ProductService
                 'price'=>(string)$request->input('price'),
                 'quantity'=>$request->input('quantity'),
                 'thumb'=>(string)$request->input('thumb'),
-                'id_crop'=>$request->input('id_crop'),
+                'supplier_id'=>$request->input('supplier_id'),
+                'farmer_id'=>$request->input('farmer_id'),
                 'menu_id'=>$request->input('menu_id'),
             ]);
             Session::flash("success","Thêm thành công");
@@ -69,7 +73,8 @@ class ProductService
             $product->price = (string)$request->input('price');
             $product->quantity = $request->input('quantity');
             $product->thumb = (string)$request->input('thumb');
-            $product->id_crop = $request->input('id_crop');
+            $product->supplier_id = $request->input('supplier_id');
+            $product->farmer_id = $request->input('farmer_id');
             $product->menu_id = $request->input('menu_id');
             $product->save();
             Session::flash('success', 'Cập nhật thành công !');
@@ -83,9 +88,9 @@ class ProductService
 
     public function destroy($request){
         $id = (int)$request->input('id');
-        $crop = Fish::where('id', $id)->first();
-        if ($crop) {
-            $crop->delete();
+        $product = Product::where('id', $id)->first();
+        if ($product) {
+            $product->delete();
             return true;
         }
         return false;

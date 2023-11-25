@@ -11,7 +11,6 @@
             <th width="20%">Chi tiết</th>
             <th width="5%">Giá</th>
             <th width="10%">Ảnh</th>
-            <th width="15%">Cây Trồng</th>
             <th width="15%">Cập nhật </th>
             <th>&nbsp</th>
         </tr>
@@ -27,7 +26,6 @@
                 <td width="17%"><div style="height:150px; overflow:hidden">{{$product->detail}}</div></td>
                 <td width="8%">{{$product->price}} VND</td>
                 <td width="10%"> <img width="150px" class="show-img-product rounded mx-auto d-block" src="{{$product->thumb}}" alt="Hình ảnh"></td>
-                <td width="15%">{{$product->name_crop}}</td>
                 <td width="15%">
                     <a style="margin-right: 5px" class="button btn-outline-warning btn-sm" href="/admin/products/edit/{{$product->id}} ">
                         <i class="fa fa-edit"></i> <i>Edit</i>

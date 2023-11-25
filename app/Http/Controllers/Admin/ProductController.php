@@ -17,19 +17,20 @@ class ProductController extends Controller
 
     public function index(){
         $products = $this->productService->get();
-        dd($products);
         return view('admin.products.list',[
             "title"=>"Sản Phẩm",
             "products"=>$products,
         ]);
     }
     public function create(){
-        $crops = $this->productService->getCrop();
+        $farmers = $this->productService->getFarmer();
+        $suppliers = $this->productService->getSupplier();
         $menus = $this->productService->getMenu();
         return view('admin.products.add',[
             "title"=>"Thủy Sản",
             "menus"=>$menus,
-            "fishs"=>$crops
+            "farmers"=>$farmers,
+            "suppliers"=>$suppliers
         ]);
     }
 
@@ -47,14 +48,16 @@ class ProductController extends Controller
     }
 
     public function show(Product $product){
-        $crops = $this->productService->getCrop();
+        $farmers = $this->productService->getFarmer();
         $menus = $this->productService->getMenu();
+        $suppliers = $this->productService->getSupplier();
 //        dd($cropId);
         return view('admin.products.edit',[
             'title' => 'Chỉnh sửa Thủy Sản: '. $product->name,
-            'fishs' => $crops,
             "menus"=>$menus,
-            "product"=>$product
+            "product"=>$product,
+            "suppliers"=>$suppliers,
+            "farmers"=>$farmers
         ]);
     }
 
