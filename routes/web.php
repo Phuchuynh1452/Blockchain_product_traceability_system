@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\SeedsupplierController;
 use App\Http\Controllers\Admin\FarmerController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UploadController;
+use App\Http\Controllers\Admin\SaleroomController;
+use App\Http\Controllers\Admin\BillreceivedController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +25,7 @@ use App\Http\Controllers\Admin\UploadController;
 */
 
 Route::get('/', [MainController::class, 'index'])->name('home');
-
+Route::get('/checkBlock/{number}/{blockchaindb}', [MainController::class,'checkBlock']);
 Route::middleware(['auth'])->group(function(){
     Route::middleware(checkLoginPerrmission::class)->group(function () {
         Route::prefix('admin')->group(function () {
@@ -74,14 +76,14 @@ Route::middleware(['auth'])->group(function(){
             });
 
             #saleroom
-//            Route::prefix('salerooms')->group(function () {
-//                Route::get('/add', [SaleroomController::class, 'create'])->name('admin.salerooms.add');
-//                Route::post('/add',[SaleroomController::class,'store']);
-//                Route::get('/list', [SaleroomController::class, 'index'])->name('admin.salerooms.list');
-//                Route::get('/edit/{salesroom}', [SaleroomController::class, 'show']);
-//                Route::post('/edit/{salesroom}', [SaleroomController::class, 'update']);
-//                Route::DELETE('/destroy', [SaleroomController::class, 'destroy']);
-//            });
+            Route::prefix('salerooms')->group(function () {
+                Route::get('/add', [SaleroomController::class, 'create'])->name('admin.salerooms.add');
+                Route::post('/add',[SaleroomController::class,'store']);
+                Route::get('/list', [SaleroomController::class, 'index'])->name('admin.salerooms.list');
+                Route::get('/edit/{salesroom}', [SaleroomController::class, 'show']);
+                Route::post('/edit/{salesroom}', [SaleroomController::class, 'update']);
+                Route::DELETE('/destroy', [SaleroomController::class, 'destroy']);
+            });
 
             #seedsandseedlings
 //            Route::prefix('seedsandseedlings')->group(function () {
@@ -142,16 +144,16 @@ Route::middleware(['auth'])->group(function(){
             Route::post('upload/services', [UploadController::class, 'store']);
 
             #billreceived
-//            Route::prefix('billreceiveds')->group(function () {
-//                Route::get('/backupDBFunc', [BillreceivedController::class, 'createDatabaseBackup']);
-//                Route::get('/add', [BillreceivedController::class, 'create'])->name('admin.billreceiveds.add');
-//                Route::post('/add',[BillreceivedController::class,'store']);
-//                Route::post('/getProductValue',[BillreceivedController::class,'getProductValue']);
-//                Route::get('/list', [BillreceivedController::class, 'index'])->name('admin.billreceiveds.list');
-//                Route::get('/edit/{billreceived}', [BillreceivedController::class, 'show']);
-//                Route::post('/edit/{billreceived}', [BillreceivedController::class, 'update']);
-//                Route::DELETE('/destroy', [BillreceivedController::class, 'destroy']);
-//            });
+            Route::prefix('billreceiveds')->group(function () {
+                Route::get('/backupDBFunc', [BillreceivedController::class, 'createDatabaseBackup']);
+                Route::get('/add', [BillreceivedController::class, 'create'])->name('admin.billreceiveds.add');
+                Route::post('/add',[BillreceivedController::class,'store']);
+                Route::post('/getProductValue',[BillreceivedController::class,'getProductValue']);
+                Route::get('/list', [BillreceivedController::class, 'index'])->name('admin.billreceiveds.list');
+                Route::get('/edit/{billreceived}', [BillreceivedController::class, 'show']);
+                Route::post('/edit/{billreceived}', [BillreceivedController::class, 'update']);
+                Route::DELETE('/destroy', [BillreceivedController::class, 'destroy']);
+            });
 
             #accuracys
 //            Route::prefix('accuracys')->group(function () {

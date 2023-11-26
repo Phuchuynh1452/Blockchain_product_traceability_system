@@ -40,7 +40,7 @@
                             @for($i=0;$i<sizeof($arrs);$i++)
                                 @foreach($salerooms as $key => $saleroom)
                                     @if($saleroom->id == (int)$arrs[$i])
-                                       • {{ $saleroom->tencoso }} <br>
+                                       • {{ $saleroom->name }} <br>
                                     @endif
                                 @endforeach
                             @endfor

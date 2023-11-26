@@ -62,16 +62,7 @@
             </div>
 
             <div class="form-group">
-                <label for="menu">Hộ Nuôi Trồng</label>
-                <select class="form-control" name="farmer_id">
-                    @foreach($farmers as $farmer)
-                        <option value="{{$farmer->id}}">{{$farmer->tencoso}}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="menu">Loại Thủy Sản</label>
+                <label for="menu">Loại Sản Phẩm</label>
                 <select class="form-control" name="menu_id">
                     @foreach($menus as $menu)
                         <option value="{{$menu->id}}">{{$menu->name}}</option>

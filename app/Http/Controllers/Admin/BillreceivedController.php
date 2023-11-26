@@ -30,7 +30,6 @@ class BillreceivedController extends Controller
         $products = $this->billreceivedService->getProduct();
         $salerooms = $this->billreceivedService->getSaleroom();
         $firstProduct = $this->billreceivedService->getFirstProduct();
-//        dd($firstProduct);
         return view('admin.billreceiveds.add',[
             "title"=>"Hoá Đơn Nhập Hàng",
             "products"=>$products,
@@ -40,28 +39,11 @@ class BillreceivedController extends Controller
     }
 
     public function store(Request $request){
-//        dd($request->input("saleroom"));
         if(session()->get('perr') == 1){
             $result = $this->billreceivedService->create($request);
             if($result){
-                $databaseName = env('DB_DATABASE');
-                $userName = env('DB_USERNAME');
-                $password = env('DB_PASSWORD');
-                $backupPath = storage_path('app/backup/backup_'.date("YY_m_d").date("_h_i_s").'.sql');
-
-                $command = "mysqldump --user={$userName} --password={$password} {$databaseName} > {$backupPath}";
-
-                exec($command, $output, $returnCode);
-
-
-                if ($returnCode == 0){
-                    Session::flash("success","Thêm thành công");
-                    return redirect()->route('admin.billreceiveds.list');
-                }else{
-                    Session::flash("success","Backup Database thất bại");
-                    return redirect()->route('admin.billreceiveds.list');
-                }
-
+                Session::flash("success","Thêm thành công");
+                return redirect()->route('admin.billreceiveds.list');
             }else{
                 return redirect()->back();
             }
@@ -128,18 +110,14 @@ class BillreceivedController extends Controller
         $getProductValue = $this->billreceivedService->getProductValue($request->id_product);
 
 
-        $mavungtrong = $getProductValue[0]->mavungtrong;
         $madoanhnghiep = $getProductValue[0]->madoanhnghiep;
-        $tenchunhatrong = $getProductValue[0]->tenchunhatrong;
         $tencoso = $getProductValue[0]->tencoso;
         $thumb = $getProductValue[0]->thumb;
 
 
         return response()->json([
             'error' =>true,
-            'mavungtrong' => $mavungtrong,
             'madoanhnghiep' => $madoanhnghiep,
-            'tenchunhatrong' => $tenchunhatrong,
             'tencoso' => $tencoso,
             'thumb'=>$thumb
         ]);

@@ -23,13 +23,11 @@ class ProductController extends Controller
         ]);
     }
     public function create(){
-        $farmers = $this->productService->getFarmer();
         $suppliers = $this->productService->getSupplier();
         $menus = $this->productService->getMenu();
         return view('admin.products.add',[
-            "title"=>"Thủy Sản",
+            "title"=>"Sản Phẩm",
             "menus"=>$menus,
-            "farmers"=>$farmers,
             "suppliers"=>$suppliers
         ]);
     }
@@ -48,16 +46,14 @@ class ProductController extends Controller
     }
 
     public function show(Product $product){
-        $farmers = $this->productService->getFarmer();
         $menus = $this->productService->getMenu();
         $suppliers = $this->productService->getSupplier();
 //        dd($cropId);
         return view('admin.products.edit',[
-            'title' => 'Chỉnh sửa Thủy Sản: '. $product->name,
+            'title' => 'Chỉnh sửa Sản Phẩm: '. $product->name,
             "menus"=>$menus,
             "product"=>$product,
-            "suppliers"=>$suppliers,
-            "farmers"=>$farmers
+            "suppliers"=>$suppliers
         ]);
     }
 

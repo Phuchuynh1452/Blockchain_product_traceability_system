@@ -80,21 +80,7 @@
             </div>
 
             <div class="form-group">
-                <label for="menu">Hộ Nuôi Trồng</label>
-                <select class="form-control" name="farmer_id">
-                    @foreach($farmers as $farmer)
-                        @if($farmer->id == $product->farmer_id)
-                            <option selected value="{{$farmer->id}}">{{$farmer->tencoso}}</option>
-                        @else
-                            <option value="{{$farmer->id}}">{{$farmer->tencoso}}</option>
-                        @endif
-
-                    @endforeach
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="menu">Danh Mục</label>
+                <label for="menu">Loại Sản Phẩm</label>
                 <select class="form-control" name="menu_id">
                     @foreach($menus as $menu)
                         @if($menu->id == $product->menu_id)

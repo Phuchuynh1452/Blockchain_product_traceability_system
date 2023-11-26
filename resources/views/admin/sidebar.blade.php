@@ -79,21 +79,21 @@
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-home"></i>
+                        <i class="nav-icon fas fa-shopping-bag"></i>
                         <p>
-                            Chủ Hộ Kinh Doanh
+                            Sản Phẩm
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?php echo route('admin.farmers.add')?>" class="nav-link">
-                                <p>Thêm hộ kinh doanh </p>
+                            <a href="<?php echo route('admin.products.add')?>" class="nav-link">
+                                <p>Thêm sản phẩm</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/farmers/list" class="nav-link">
-                                <p>Danh sách hộ kinh doanh </p>
+                            <a href="/admin/products/list" class="nav-link">
+                                <p>Danh sách sản phẩm </p>
                             </a>
                         </li>
                     </ul>
@@ -101,24 +101,52 @@
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-fish"></i>
+                        <i class="nav-icon fas fa-store"></i>
                         <p>
-                            Thủy Sản
+                            Cửa Hàng
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?php echo route('admin.products.add')?>" class="nav-link">
-                                <p>Thêm loại thủy sản</p>
+                            <a href="<?php echo route('admin.salerooms.add')?>" class="nav-link">
+                                <p>Thêm cửa hàng</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/products/list" class="nav-link">
-                                <p>Danh sách loại thủy sản </p>
+                            <a href="/admin/salerooms/list" class="nav-link">
+                                <p>Danh sách cửa hàng </p>
                             </a>
                         </li>
                     </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-money-bill"></i>
+                        <p>
+                            Hoá Đơn
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?php echo route('admin.billreceiveds.add')?>" class="nav-link">
+                                <p>Thêm hóa đơn</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/billreceiveds/list" class="nav-link">
+                                <p>Danh sách hóa đơn</p>
+                            </a>
+                        </li>
+                        {{--                        <li class="nav-item">--}}
+                        {{--                            <a href="/admin/billreceiveds/backupDBFunc" class="nav-link">--}}
+                        {{--                                <p>Backup DB</p>--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
+                    </ul>
+
                 </li>
 
                 <li class="nav-item">
