@@ -43,14 +43,14 @@ class SeedsupplierController extends Controller
         }
     }
 
-    public function show(Seedsupplier $seedsupplier){
+    public function show(Supplier $seedsupplier){
         return view('admin.seedsuppliers.edit',[
             'title' => 'Chỉnh sửa nhà cung cấp: '. $seedsupplier->tencoso,
             'seedsuppliers' => $seedsupplier
         ]);
     }
 
-    public function update(Request $request, Seedsupplier $seedsupplier)
+    public function update(Request $request, Supplier $seedsupplier)
     {
         $result = $this->seedsupplierService->update($request, $seedsupplier);
         if($result){

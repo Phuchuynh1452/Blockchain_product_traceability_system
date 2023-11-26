@@ -17,8 +17,6 @@ function getProductValue(){
             } else {
                 document.getElementById('idNCC').innerHTML = result.madoanhnghiep;
                 document.getElementById('nameNCC').innerHTML = result.tencoso;
-                document.getElementById('nameNV').innerHTML = result.tenchunhatrong;
-                document.getElementById('idNV').innerHTML = result.mavungtrong;
                 document.getElementById('img_product').src = result.thumb;
 
             }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\Saleroom\SaleroomService;
+use App\Models\Market;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -18,13 +19,13 @@ class SaleroomController extends Controller
     public function index(){
         $salerooms = $this->saleroomService->get();
         return view('admin.salerooms.list',[
-            "title"=>"Saleroom",
+            "title"=>"Cửa Hàng",
             "salerooms"=>$salerooms
         ]);
     }
     public function create(){
         return view('admin.salerooms.add',[
-            "title"=>"Saleroom",
+            "title"=>"Cửa Hàng",
         ]);
     }
 
@@ -33,43 +34,15 @@ class SaleroomController extends Controller
         if(session()->get('perr') == 1){
             $result = $this->saleroomService->create($request);
             if($result){
-                $databaseName = env('DB_DATABASE');
-                $userName = env('DB_USERNAME');
-                $password = env('DB_PASSWORD');
-                $backupPath = storage_path('app/backup/backup_'.date("YY_m_d").date("_h_i_s").'.sql');
-
-                $command = "mysqldump --user={$userName} --password={$password} {$databaseName} > {$backupPath}";
-
-                exec($command, $output, $returnCode);
-
-                if ($returnCode === 0){
-//                    return response([
-//                        "error"=>true,
-//                        "message"=>"Thêm thành công"
-//                    ]);
-                    $salerooms = $this->saleroomService->get();
-                    return view('admin.salerooms.list',[
-                        "title"=>"Saleroom",
-                        "salerooms"=>$salerooms
-                    ]);
-                }else{
-                    return response([
-                        "error"=>true,
-                        "message"=>"Thêm thành công. Nhưnng Backup DB thất bại"
-                    ]);
-                }
+                $salerooms = $this->saleroomService->get();
+                return view('admin.salerooms.list',[
+                    "title"=>"Saleroom",
+                    "salerooms"=>$salerooms
+                ]);
             }else{
-//                return response([
-//                    "error"=>false,
-//                    "message"=>"Thêm lỗi"
-//                ]);
                 return redirect()->back();
             }
         }else{
-//            return response([
-//                "error"=>false,
-//                "message"=>"Thêm lỗi"
-//            ]);
             return redirect()->back();
         }
     }
@@ -77,14 +50,14 @@ class SaleroomController extends Controller
 
 
 
-    public function show(Salesroom $salesroom){
+    public function show(Market $salesroom){
         return view('admin.salerooms.edit',[
-            'title' => 'Chỉnh sửa Saleroom: '. $salesroom->tencoso,
+            'title' => 'Chỉnh sửa Cửa Hàng: '. $salesroom->name,
             'saleroom' => $salesroom
         ]);
     }
 
-    public function update(Request $request, Salesroom $salesroom)
+    public function update(Request $request, Market $salesroom)
     {
         $result = $this->saleroomService->update($request, $salesroom);
         if($result){
@@ -100,7 +73,7 @@ class SaleroomController extends Controller
         if($result){
             return response()->json([
                 'error' =>false,
-                'message' => 'Xóa Saleroom thành công!'
+                'message' => 'Xóa Cửa Hàng thành công!'
             ]);
         }
         return response()->json(['error'=>true]);

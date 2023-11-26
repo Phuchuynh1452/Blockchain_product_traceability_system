@@ -50,7 +50,7 @@
                                     <div class="form-check">
                                         <input class="form-check-input" id="saleroom" name="saleroom[]" type="checkbox" value="{{ $saleroom->id }}" id="{{ $saleroom->id }}">
                                         <label class="form-check-label" for="flexCheckDefault">
-                                            {{ $saleroom->tencoso }}
+                                            {{ $saleroom->name }}
                                         </label>
                                     </div>
                                 @endforeach
@@ -72,19 +72,13 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <th  scope="row">Nhà cung cấp giống</th>
-                                <td id="nameNCC">{{ $firstProduct[0]->name_seed }}</td>
+                                <th  scope="row">Nhà cung cấp</th>
+                                <td id="nameNCC">{{ $firstProduct[0]->name_supplier }}</td>
                                 <td id="idNCC">{{ $firstProduct[0]->madoanhnghiep }}</td>
                             </tr>
                             <tr>
-                                <th scope="row">Nhà Vườn</th>
-                                <td id="nameNV">{{ $firstProduct[0]->tencoso }}</td>
-                                <td id="idNV">{{ $firstProduct[0]->mavungtrong }}</td>
+                                <th colspan="3" class="align-content-center" scope="row"><img style="display: block;margin-left: auto;margin-right: auto;width: 40%;" width="150px" id="img_product" src="{{ $firstProduct[0]->thumb }}" alt="Ảnh"></th>
                             </tr>
-                            <tr>
-                                <th colspan="3" class="align-content-center" scope="row"><img style="display: block;margin-left: auto;margin-right: auto;width: 40%;" width="150px" id="img_product" src="{{ $products[0]->thumb }}" alt="Ảnh"></th>
-                            </tr>
-
                             </tbody>
                         </table>
                     </div>

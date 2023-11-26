@@ -8,7 +8,7 @@
             <th width="5%">STT</th>
             <th width="15%">Mã Cơ Sở</th>
             <th width="15%">Tên Cơ Sở</th>
-            <th width="10%">Chủ Vườn</th>
+            <th width="10%">Chủ Hộ</th>
             <th width="20%">Địa chỉ</th>
             <th width="20%">Ảnh</th>
             <th width="15%">Cập nhật </th>

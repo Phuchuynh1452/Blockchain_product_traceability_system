@@ -6,7 +6,6 @@ use App\Models\Farmer;
 use App\Models\img_products;
 use App\Models\Menu;
 use App\Models\Product;
-use App\Models\Seedsandseedling;
 use App\Models\Supplier;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -24,23 +23,8 @@ class ProductService
         return Menu::all();
     }
 
-    public function getFarmer(){
-        return Farmer::all();
-    }
-
     public function getSupplier(){
         return Supplier::all();
-    }
-
-    public function getSeedsandSeedling(){
-        return Seedsandseedling::all();
-    }
-
-    public function getId($id){
-        $result = DB::select('select *
-                                    from  fishs
-                                    where fishs.id = '.$id);
-        return $result;
     }
 
     public function create($request){
@@ -53,7 +37,6 @@ class ProductService
                 'quantity'=>$request->input('quantity'),
                 'thumb'=>(string)$request->input('thumb'),
                 'supplier_id'=>$request->input('supplier_id'),
-                'farmer_id'=>$request->input('farmer_id'),
                 'menu_id'=>$request->input('menu_id'),
             ]);
             Session::flash("success","Thêm thành công");
@@ -74,7 +57,6 @@ class ProductService
             $product->quantity = $request->input('quantity');
             $product->thumb = (string)$request->input('thumb');
             $product->supplier_id = $request->input('supplier_id');
-            $product->farmer_id = $request->input('farmer_id');
             $product->menu_id = $request->input('menu_id');
             $product->save();
             Session::flash('success', 'Cập nhật thành công !');
