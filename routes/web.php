@@ -10,6 +10,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\Admin\SeedsupplierController;
 use App\Http\Controllers\Admin\FarmerController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\UploadController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
